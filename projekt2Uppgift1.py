@@ -29,11 +29,13 @@ def dekryptera_rsa(chiffertext, nBob, eBob):
     privat_nyckel = modul_inv(eBob, phi_n)
     
     dekrypterade_meddelanden = []
-    for chiffer in chiffertext:
+    for chiffer in reversed(chiffertext):
         meddelande = pow(chiffer, privat_nyckel, nBob)
         dekrypterade_meddelanden.append(meddelande)
     
     dekrypterad_text = ''.join(heltal_till_bytes(m).decode('utf-8', errors='ignore') for m in dekrypterade_meddelanden)
+
+    dekrypterad_text = dekrypterad_text[::-1]
     
     return dekrypterad_text
 
