@@ -1,13 +1,12 @@
-import math
+from sympy import factorint
 
 def faktorisera_modul(nBob):
-    if nBob % 2 == 0:
-        return 2, nBob // 2
-    max_divisor = math.isqrt(nBob) + 1
-    for kandidat in range(3, max_divisor, 2):
-        if nBob % kandidat == 0:
-            return kandidat, nBob // kandidat
-    raise ValueError("Inga faktorer hittades")
+    faktorer = factorint(nBob)
+    faktorer_lista = list(faktorer.keys())
+    if len(faktorer_lista) != 2:
+        raise ValueError("nBob är ej produkt av 2 primtal")
+    p, q = faktorer_lista
+    return p, q
 
 
 def utokad_euklides(a, b):
