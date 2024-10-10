@@ -1,5 +1,7 @@
 def faktorisera_modul(nBob):
-    for kandidat in range(2, int(nBob**0.5) + 1):
+    if nBob % 2 == 0:
+        return 2, nBob // 2  
+    for kandidat in range(3, int(nBob**0.5) + 1, 2):
         if nBob % kandidat == 0:
             return kandidat, nBob // kandidat
     raise ValueError("Inga faktorer hittades")
