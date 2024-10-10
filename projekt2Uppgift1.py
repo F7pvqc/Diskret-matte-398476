@@ -1,10 +1,14 @@
+import math
+
 def faktorisera_modul(nBob):
     if nBob % 2 == 0:
-        return 2, nBob // 2  
-    for kandidat in range(3, int(nBob**0.5) + 1, 2):
+        return 2, nBob // 2
+    max_divisor = math.isqrt(nBob) + 1
+    for kandidat in range(3, max_divisor, 2):
         if nBob % kandidat == 0:
             return kandidat, nBob // kandidat
     raise ValueError("Inga faktorer hittades")
+
 
 def utokad_euklides(a, b):
     if a == 0:
